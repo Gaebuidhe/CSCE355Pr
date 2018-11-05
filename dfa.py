@@ -26,12 +26,16 @@ class Dfa:
         newAccepting = raw_input("Accepting states: ")
 
         # Checks if accepting states are all
+        print (self.check_input(newAccepting))
         while self.check_input(newAccepting) == False:
             print("Improper Accepting states, ensure states are integers.")
             newAccepting = raw_input("Accepting states: ")
 
+        # With integer string we split and create accepting
         mapping = newAccepting.split()
         accepting = map(int, mapping)
+
+
         for i in range(0,int(statesNo)):
             if i == 0:
                 states.append(raw_input("Input first state: "))
@@ -39,9 +43,9 @@ class Dfa:
                 states.append(raw_input("Input next state: "))
 
     # checks if input is a possible array of
-    def check_input(chkString):
+    def check_input(self, chkString):
         foo = chkString.split()
-        for i in range(0,len(foo)):
-            if foo[i].isdigit == False:
-                return False
-        return True
+        if all(x.isdigit() for x in foo) == True:
+            return True
+        else:
+            return False

@@ -22,7 +22,7 @@ while status == True:
     if input.lower == "simulation" or input[0][0] == '1':
         r1 = Dfa()
         r1.set_dfa()
-        print ("I'm sorry this feature has not yet been implemented.")
+        
 
     elif input.lower == "minimizing" or input.lower == "minimize" or input[0][0] =='2':
         print ("I'm sorry this feature has not yet been implemented.")
