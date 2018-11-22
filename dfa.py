@@ -3,44 +3,39 @@ import sys
 import time
 
 class Dfa:
+    global statesNo
+    global accepting
+    global states
+    global alphabet
+    global curState
+    global psFL
+
     # initiates dfa with blank states and accepting states
     def __init__(self):
-        statesNo = None
-        global accepting
-        accepting = []
-        global states
-        states = []
-        global alphabet
+        self.statesNo = None
+        self.accepting = []
+        self.states = []
+        self.curState = 0
 
-    # setter function to get info from the user for the dfa
-    def set_dfa(self):
-        # First get the number of states in the DFA
-        statesNo = raw_input("Number of States: ")
-
-        # Checks if input is integer if not re-asks for integer
-        while statesNo.isdigit()==False:
-            print("Please input integer...")
-            statesNo = raw_input()
-
-        # Next asks for accepting states
-        newAccepting = raw_input("Accepting states: ")
-
-        # Checks if accepting states are all
-        print (self.check_input(newAccepting))
-        while self.check_input(newAccepting) == False:
-            print("Improper Accepting states, ensure states are integers.")
-            newAccepting = raw_input("Accepting states: ")
-
-        # With integer string we split and create accepting
-        mapping = newAccepting.split()
-        accepting = map(int, mapping)
+    #set states Number
+    def set_statesNo(self, newNo):
+        self.statesNo = newNo
 
 
-        for i in range(0,int(statesNo)):
-            if i == 0:
-                states.append(raw_input("Input first state: "))
-            else:
-                states.append(raw_input("Input next state: "))
+    # accepting states setter
+    def set_accepting(self, list):
+        mapping = list.split()
+        self.accepting = map(int, mapping)
+
+    # states setter
+    def set_states(self, listStr):
+        for i in range(0,int(self.statesNo)):
+            mid = listStr[i].split()
+            self.states.append(map(int, mid))
+
+    # alphabet setter takes in a string
+    def set_alphabet(self, alpStr):
+        self.alphabet = alpStr
 
     # checks if input is a possible array of
     def check_input(self, chkString):
@@ -49,3 +44,29 @@ class Dfa:
             return True
         else:
             return False
+
+    # take string and test it against current DFA
+    def dfaStringtest(self, inputStr):
+        for i in range (0,len(inputStr)):
+            temp = inputStr[i]
+            if temp in self.alphabet:
+                print(self.alphabet.index(temp))
+            else:
+                print("Fail")
+
+    # takes the alphabet and checks for doubles
+    def check_alphabet(self, testAlpha):
+        for i in range(0, len(testAlpha)):
+            if testAlpha.count(testAlpha[i]) > 1:
+                return False
+        return True
+
+    # takes the test string and passes it through the checks
+    def check_string(self, inStr):
+        for i in range(0,len(inStr)):
+            if inStr[i] in self.alphabet:
+                tempState = self.states[int(self.curState)][int(self.alphabet.index(inStr[i]))]
+                print(tempState)
+                self.curState = tempState
+            else:
+                print("String Failed")
