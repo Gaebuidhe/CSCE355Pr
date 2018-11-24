@@ -63,10 +63,16 @@ class Dfa:
 
     # takes the test string and passes it through the checks
     def check_string(self, inStr):
+        self.curState = 0
         for i in range(0,len(inStr)):
             if inStr[i] in self.alphabet:
                 tempState = self.states[int(self.curState)][int(self.alphabet.index(inStr[i]))]
-                print(tempState)
                 self.curState = tempState
+                if self.curState >= self.statesNo or self.curState < 0:
+                    return "Reject"
             else:
-                print("String Failed")
+                return "Reject"
+        if self.curState in self.accepting:
+            return "Accept"
+        else:
+            return "Reject"

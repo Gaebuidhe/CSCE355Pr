@@ -6,45 +6,26 @@ from dfa import Dfa
 
 r1 = Dfa()
 
-# initial input for number of states
-statesNo = raw_input("Number of States: ")
-while statesNo.isdigit() == False:
-    print("Please input integer...")
-    statesNo = raw_input()
+flDfa = open("simDFA.txt")
 
-r1.set_statesNo(statesNo)
+r1.set_statesNo(int(flDfa.readline()))
 
-# initial input accepting states
-newAccepting = raw_input("Accepting states: ")
-while r1.check_input(newAccepting) == False:
-    print("Improper Accepting states, ensure states are integers.")
-    newAccepting = raw_input("Accepting states: ")
+r1.set_accepting(flDfa.readline())
 
-r1.set_accepting(newAccepting)
+r1.set_alphabet(flDfa.readline())
 
-# initial input alphabet
-alphabet = raw_input("Alphabet: ")
-# checks for doubles in the alphabet to eliminate errors
-while r1.check_alphabet(alphabet) == False:
-    alphabet = raw_input("Previous had double, Alphabet: ")
+tempStates = []
+for i in range(0,r1.statesNo):
+    tempStates.append(flDfa.readline())
 
-r1.set_alphabet(alphabet)
+r1.set_states(tempStates)
+flDfa.close()
 
-# initial input state changes
-newStates = []
-for i in range(0,int(statesNo)):
-    if i == 0:
-        tempState = raw_input("Input first state: ")
-        while (r1.check_input(tempState) == False) or (len(tempState.split()) != len(alphabet)):
-            tempState = raw_input("Improper Input, Input first state: ")
-        newStates.append(tempState)
-    else:
-        tempState = raw_input("Input next state: ")
-        while (r1.check_input(tempState) == False) or (len(tempState.split()) != len(alphabet)):
-            tempState = raw_input("Improper Input, Input next state: ")
-        newStates.append(tempState)
-
-r1.set_states(newStates)
-dfainput = raw_input("Test String: ")
-r1.check_string(dfainput)
-#r1.dfaStringtest(dfainput)
+print("Number of States: " + str(r1.statesNo))
+print("Accepting States: " + str(r1.accepting))
+print("Alphabet: " + r1.alphabet.rstrip())
+print("States: " + str(r1.states[0]))
+for i in range(1,r1.statesNo):
+    print(r1.states[i])
+#3dfainput = raw_input("Test String: ")
+#print(r1.check_string(dfainput))
