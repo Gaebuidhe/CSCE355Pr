@@ -21,10 +21,29 @@ while status == True:
     #the if else statements have a variety of acceptable inputs depending on the user interpretation of the menu
     if input.lower == "simulation" or input[0][0] == '1':
         r1 = Dfa()
-        r1.set_dfa()
-        testStr = raw_input()
+        flDfa = open("simDFA.txt")
+
+        r1.set_statesNo(int(flDfa.readline()))
+
+        r1.set_accepting(flDfa.readline())
+
+        r1.set_alphabet(flDfa.readline())
+
+        tempStates = []
+        for i in range(0,r1.statesNo):
+            tempStates.append(flDfa.readline())
+
+        r1.set_states(tempStates)
+        flDfa.close()
+
+        print("Number of States: " + str(r1.statesNo))
+        print("Accepting States: " + str(r1.accepting))
+        print("Alphabet: " + r1.alphabet.rstrip())
+        print("States: " + str(r1.states[0]))
+        for i in range(1,r1.statesNo):
+            print(r1.states[i])
         while testStr.lower != "exit":
-            
+
 
     elif input.lower == "minimizing" or input.lower == "minimize" or input[0][0] =='2':
         print ("I'm sorry this feature has not yet been implemented.")
