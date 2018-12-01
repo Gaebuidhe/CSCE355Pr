@@ -8,7 +8,7 @@ r1 = Dfa()
 
 # Opens the DFA text file and fills out the dfa statistics:
 # State Number, Accepting States, Alphabet, and State Changes
-flDfa = open("simDFA.txt")
+flDfa = open(sys.argv[1])
 
 r1.set_statesNo(int(flDfa.readline()))
 
@@ -32,7 +32,7 @@ for i in range(1,r1.statesNo):
     print(r1.states[i])
 
 # goes through the test trings and runs them against the dfa
-dfainput = open("simDFA_stringTest.txt")
+dfainput = open(sys.argv[2])
 
 testString = dfainput.readline()
 while testString:
