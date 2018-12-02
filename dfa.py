@@ -9,6 +9,7 @@ class Dfa:
     global alphabet
     global curState
     global psFL
+    global nonAccepting
 
     # initiates dfa with blank states and accepting states
     def __init__(self):
@@ -69,10 +70,13 @@ class Dfa:
                 tempState = self.states[int(self.curState)][int(self.alphabet.index(inStr[i]))]
                 self.curState = tempState
                 if self.curState >= self.statesNo or self.curState < 0:
-                    return "Reject"
+                    return "reject"
             else:
-                return "Reject"
+                return "reject"
         if self.curState in self.accepting:
-            return "Accept"
+            return "accept"
         else:
-            return "Reject"
+            return "reject"
+
+    def minimizeDFA(self):
+        self.

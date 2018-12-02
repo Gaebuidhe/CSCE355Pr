@@ -10,34 +10,25 @@ r1 = Dfa()
 # State Number, Accepting States, Alphabet, and State Changes
 flDfa = open(sys.argv[1])
 
-r1.set_statesNo(int(flDfa.readline()))
+r1.set_statesNo(int(flDfa.readline()[18:-1]))
 
-r1.set_accepting(flDfa.readline())
+r1.set_accepting(flDfa.readline()[18:-1])
 
-r1.set_alphabet(flDfa.readline())
+r1.set_alphabet(flDfa.readline()[10:-1])
 
 tempStates = []
 for i in range(0,r1.statesNo):
-    tempStates.append(flDfa.readline())
+    tempStates.append(flDfa.readline()[0:-1])
 
 r1.set_states(tempStates)
 flDfa.close()
-
-# Displays the Dfa
-print("Number of States: " + str(r1.statesNo))
-print("Accepting States: " + str(r1.accepting))
-print("Alphabet: " + r1.alphabet.rstrip())
-print("States: " + str(r1.states[0]))
-for i in range(1,r1.statesNo):
-    print(r1.states[i])
 
 # goes through the test trings and runs them against the dfa
 dfainput = open(sys.argv[2])
 
 testString = dfainput.readline()
 while testString:
-    print(testString.rstrip())
-    print(r1.check_string(testString.rstrip())+"\n")
+    print(r1.check_string(testString[0:-1]))
     testString = dfainput.readline()
 dfainput.close
 #3dfainput = raw_input("Test String: ")
