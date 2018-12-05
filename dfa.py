@@ -1,4 +1,7 @@
-#simulation start dfa class for part 1
+# Joseph Frazier
+# CSCE 355
+# December 6, 2018
+# simulation start dfa class for part 1
 import sys
 
 class Dfa:

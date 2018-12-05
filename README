@@ -28,4 +28,4 @@ Description:
     Determining properties of a DFA utilizes depth first search algorithms to
     determine paths from the start state to see if a final state can be reached.
     From there, the program continues to determine if there are cycles in the
-    system. If there is but the start state cannot reach
+    system. It then prints out if the 

@@ -1,3 +1,6 @@
+# Joseph Frazier
+# CSCE 355
+# December 6, 2018
 # main
 #!/usr/bin/env python
 import sys

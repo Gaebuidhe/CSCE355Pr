@@ -1,3 +1,6 @@
+# Joseph Frazier
+# CSCE 355
+# December 6, 2018
 # modified DFS Code from https://www.geeksforgeeks.org/depth-first-search-or-dfs-for-a-graph/
 # Creator Neelam Yadav
 # https://www.geeksforgeeks.org/detect-cycle-in-a-graph/
@@ -6,8 +9,8 @@ import sys
 
 class Dfs:
     global graph # stores the dfa Transition tables as a directed graph
-    global dfsString #output string for dfs
-    global accepting
+    global dfsString # output string for dfs
+    global accepting # DFA accepting states
 
 
     # initiates dfs with the searching graph

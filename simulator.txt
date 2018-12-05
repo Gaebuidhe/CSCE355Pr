@@ -1,0 +1,3 @@
+Build:
+Run:
+  python2 simDFA.py
