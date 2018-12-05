@@ -1,7 +1,6 @@
 # main
 #!/usr/bin/env python
 import sys
-import time
 from dfa import Dfa
 
 r1 = Dfa()
@@ -23,13 +22,12 @@ for i in range(0,r1.statesNo):
 r1.set_states(tempStates)
 flDfa.close()
 
+
 # goes through the test trings and runs them against the dfa
 dfainput = open(sys.argv[2])
 
 testString = dfainput.readline()
 while testString:
-    print(r1.check_string(testString[0:-1]))
+    print(r1.check_string(testString[0:-1])) #passes the current string to func.
     testString = dfainput.readline()
 dfainput.close
-#3dfainput = raw_input("Test String: ")
-#print(r1.check_string(dfainput))

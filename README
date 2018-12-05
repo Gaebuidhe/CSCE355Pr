@@ -1,0 +1,31 @@
+Name:
+  Deterministic Finite Automata - CSCE 355 Project
+
+Description:
+  This is a project whose main goal was to apply aspects of Deterministic Finite
+  Automata (DFA) to code. Accomplished in this project were the 'Simulating a
+  DFA' and 'Determining properties of a DFA' from the programming assignment.
+  The code in this project utilizes Python 2; running the programs will be
+  described below.
+
+  Simulating a DFA:
+    Simulating a DFA reads lines from two text files (the DFA and a set of test
+    strings) and outputs 'accept' or 'reject' based on each test string from the
+    text file containing the string. Necessary files to run this function are
+    dfa.py, and simDFA.py in the same folder. Running the program uses command
+    python2 simDFA.py [dfa].txt [test_strings].txt. The command does accept
+    pathway directions.
+
+    Required files:
+      * dfa.py
+      * simDFA.py
+
+    Example of Commandline input:
+      * python2 simDFA.py simDFA.txt simDFA_stringTest.txt
+      * python2 simDFA.py ./test-cases/simulator/bigDFA.txt ./test-cases/simulator/bigDFA-strings.txt
+
+  Determining properties of a DFA:
+    Determining properties of a DFA utilizes depth first search algorithms to
+    determine paths from the start state to see if a final state can be reached.
+    From there, the program continues to determine if there are cycles in the
+    system. If there is but the start state cannot reach

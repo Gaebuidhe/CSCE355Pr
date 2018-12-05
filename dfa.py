@@ -1,6 +1,5 @@
 #simulation start dfa class for part 1
 import sys
-import time
 
 class Dfa:
     global statesNo
@@ -10,6 +9,7 @@ class Dfa:
     global curState
     global psFL
     global nonAccepting
+    global pk
 
     # initiates dfa with blank states and accepting states
     def __init__(self):
@@ -17,6 +17,8 @@ class Dfa:
         self.accepting = []
         self.states = []
         self.curState = 0
+        self.nonAccepting = []
+        self.pk = []
 
     #set states Number
     def set_statesNo(self, newNo):
@@ -77,6 +79,3 @@ class Dfa:
             return "accept"
         else:
             return "reject"
-
-    def minimizeDFA(self):
-        self.

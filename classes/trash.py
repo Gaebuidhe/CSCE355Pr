@@ -48,3 +48,22 @@ r1.set_states(newStates)
 dfainput = raw_input("Test String: ")
 print(r1.check_string(dfainput))
 #r1.dfaStringtest(dfainput)
+
+
+
+    # goes through equivalence steps to minimize DFA
+    def minimizeDFA(self):
+        self.nonAccepting = []
+        self.pk = []
+        for i in range(0,self.statesNo):
+            if i not in self.accepting:
+                self.nonAccepting.append(i)
+
+        self.pk.append([self.accepting,self.nonAccepting])
+        self.pk.append([self.accepting,self.nonAccepting])
+
+    def calcPk(self):
+        x = 0
+        while 1:
+            for i in range(0,len(pk[x])):
+                if len(pk[x][i]) > 1:
