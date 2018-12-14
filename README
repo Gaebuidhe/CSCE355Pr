@@ -12,7 +12,7 @@ Description:
     Simulating a DFA reads lines from two text files (the DFA and a set of test
     strings) and outputs 'accept' or 'reject' based on each test string from the
     text file containing the string. Necessary files to run this function are
-    dfa.py, and simDFA.py in the same folder. Running the program uses command
+    dfa.py and simDFA.py in the same folder. Running the program uses command
     python2 simDFA.py [dfa].txt [test_strings].txt. The command does accept
     pathway directions.
 
@@ -28,4 +28,53 @@ Description:
     Determining properties of a DFA utilizes depth first search algorithms to
     determine paths from the start state to see if a final state can be reached.
     From there, the program continues to determine if there are cycles in the
-    system. It then prints out if the 
+    system. It then prints out if the a string (i.e. empty finite, nonempty
+    finite, or nonempty infinite) based on the information given. Necessary
+    files to run this function are dfa.py, dfs.py, and propDFA.py in the same
+    folder. Running the program uses command  python2 propDFA.py [dfa].txt
+    command does accept pathway directions.
+
+    Required files:
+      * dfa.py
+      * dfs.py
+
+    Example of Commandline input:
+      * python2 propDFA.py simDFA.txt
+      * python2 propDFA.py ./test-cases/properties/DFA5.txt
+
+Installation:
+  Does not require any extra installation if Python 2 is installed. Open up
+  terminal in linux or iOS, direct to the file location and run the script via
+  python2 [dfa_script].py followed by text files to be read for the dfa input
+  and strings for simDFA, just the dfa for propDFA.
+
+Support:
+  One possible source for error in the project may occur where there is an
+  unreachable cycle that can reach the final state and the start state also
+  reaching the final state. It may read as nonempty infinite, where it actually
+  is not. This did not seem to occur for the available tests, it is less likely
+  to occur in small number of states, and/or large alphabet dfa's, but I felt
+  the potential error might need to be addressed.
+
+Authors and Acknowledgement:
+  Joseph Frazier, I worked on this project myself, research, coding etc.
+
+  Acknowledgements:
+    Researching methodologies to determine if a dfa was empty or nonempty and
+    finite or infinite. Code was utilized and modified from the following
+    sources to create a usable depth first search class:
+
+    * https://www.geeksforgeeks.org/depth-first-search-or-dfs-for-a-graph/
+      - Creator Neelam Yadav
+      - Depth first search that does not look for unreachable states
+      - Modifications included: array of reachable states from start, and
+        constructor that took in two variables that could be utilized in the
+        class.
+    * https://www.geeksforgeeks.org/detect-cycle-in-a-graph/
+      - Creator Divyanshu Mehta
+      - Cycle finder
+      - Modifications included: modified function to check and see if cycle
+        could also reach a final state, variables changed to match and utilized
+        already stored data in the class variables.
+
+    Both were pushed into a single class to minimize unnecessary imports.

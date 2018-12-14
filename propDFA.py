@@ -33,8 +33,9 @@ depth = Dfs(r1.states,r1.accepting)
 reachable = depth.DFS(0)
 
 # determines if accepting states are reachable
-for i in range(0,len(r1.accepting)):
-    if r1.accepting[i] in reachable:
+for i in range(0,len(list(r1.accepting))):
+    tempaccepting = list(r1.accepting)
+    if tempaccepting[i] in reachable:
         properties = properties + "nonempty"
         empNonemp = True # if true dfa is nonempty
         break
